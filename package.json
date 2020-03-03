@@ -35,7 +35,7 @@
     "karma-mocha-reporter": "^2.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "material-ui": "^0.20.0",
     "mkdirp": "^0.5.1",
     "mocha": "^2.4.5",

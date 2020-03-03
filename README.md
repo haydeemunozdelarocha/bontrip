@@ -1,3 +1,4 @@
 ## Bontrip
 
-Travel planning application built with React/Redux, MongoDB.
+Travel planning application built with React/Redux, MongoDB, Mapbox API.
+

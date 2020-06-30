@@ -1,0 +1,39 @@
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+#map-marker {
+  width: 100%;
+  height: 100%;
+}
+
+.mapboxgl-marker {
+  width: 50px;
+  height: 50px;
+}
+
+.map-header {
+  background-color: transparent;
+  height: 10%;
+  padding: 1rem 4rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: base-index(site-header);
+
+  @include breakpoint(small only) {
+    bottom: 0;
+    height: 15%;
+    padding: 1rem;
+    top: auto;
+  }
+}
+
+.map-wrapper { position: relative; }
+
+.map-buttons-right {
+  float: right;
+
+  @include breakpoint(small only) { float: left; }
+}

@@ -1,13 +1,21 @@
-import {City} from "./City";
+import { City } from './City';
 
 export class Trip {
-  private id: string;
-  private cities: City[];
-  private activeCityId: string;
+    public id: string;
+    public cities: City[];
+    public activeCityId: string;
 
-  constructor(data) {
-    this.id = data.id || '';
-    this.cities = data.cities || [];
-    this.activeCityId = data.activeCityId || '';
-  }
+    constructor(data: any) {
+        this.id = data.id || '';
+        this.cities = data.cities || [];
+        this.activeCityId = data.activeCityId || '';
+    }
+
+    normalize() {
+        return {
+            id: this.id,
+            cities: this.cities,
+            activeCityId: this.activeCityId,
+        };
+    }
 }

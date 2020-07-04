@@ -1,11 +1,11 @@
-import { ActionCreatorWithOptionalPayload, createAction } from '@reduxjs/toolkit';
+import { ActionCreatorWithPayload, createAction } from '@reduxjs/toolkit';
 
 export interface ISetActiveCityIdPayload {
-  cityId: string;
+    cityId: string;
 }
 
-const setActiveCity: ActionCreatorWithOptionalPayload<ISetActiveCityIdPayload> = createAction('USER::SET_ACTIVE_CITY');
+const setActiveCity: ActionCreatorWithPayload<ISetActiveCityIdPayload> = createAction('USER::SET_ACTIVE_CITY');
 
 export const userActions = {
-  setActiveCity
+    setActiveCity,
 };

@@ -1,6 +1,6 @@
 export interface ISidepanelProps {
-  orientation: string;
-  index: number;
-  image: string;
-  color?: string;
+    orientation: string;
+    index: number;
+    image: string;
+    color?: string;
 }

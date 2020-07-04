@@ -1,22 +1,22 @@
 import { createReducer, PayloadAction, Reducer } from '@reduxjs/toolkit';
-import {ISetActiveCityIdPayload, userActions} from "./user.actions";
+import { ISetActiveCityIdPayload, userActions } from './user.actions';
 
 export interface IUserReduxState {
-  activeCityId: string;
-  activeTripId: string;
+    activeCityId: string | null;
+    activeTripId: string | null;
 }
 
 const initialState: IUserReduxState = {
-  activeCityId: null,
-  activeTripId: null
+    activeCityId: null,
+    activeTripId: null,
 };
 
 export const userReducer: Reducer<IUserReduxState> = createReducer(initialState, {
-  [userActions.setActiveCity.type]: (state, action: PayloadAction<ISetActiveCityIdPayload>) => {
-    const { cityId } = action.payload;
+    [userActions.setActiveCity.type]: (state, action: PayloadAction<ISetActiveCityIdPayload>) => {
+        const { cityId } = action.payload;
 
-    state.activeCityId = cityId;
+        state.activeCityId = cityId;
 
-    return state;
-  }
+        return state;
+    },
 });

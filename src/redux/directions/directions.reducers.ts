@@ -1,35 +1,35 @@
 import { createReducer, PayloadAction, Reducer } from '@reduxjs/toolkit';
-import {directionsActions} from "./directions.actions";
+import { directionsActions } from './directions.actions';
 
 export interface IDirectionsReduxState {
-  [id: string]: any;
+    [id: string]: any;
 }
 
 export interface IDirectionsPayload {
-  directions: any;
+    directions: any;
 }
 
 export interface IRemoveDirectionsPayload {
-  directionsId: string;
+    directionsId: string;
 }
 
 const initialState: IDirectionsReduxState = {};
 
 export const directionsReducer: Reducer<IDirectionsReduxState> = createReducer(initialState, {
-  [directionsActions.add.type]: (state: IDirectionsReduxState, action: PayloadAction<IDirectionsPayload>) => {
-    const { directions } = action.payload;
-    console.log('DIRECTIONS!', directions);
-    state[directions.id] = directions;
+    [directionsActions.add.type]: (state: IDirectionsReduxState, action: PayloadAction<IDirectionsPayload>) => {
+        const { directions } = action.payload;
+        console.log('DIRECTIONS!', directions);
+        state[directions.id] = directions;
 
-    return state;
-  },
-  [directionsActions.remove.type]: (state, action: PayloadAction<IRemoveDirectionsPayload>) => {
-    const { directionsId } = action.payload;
+        return state;
+    },
+    [directionsActions.remove.type]: (state, action: PayloadAction<IRemoveDirectionsPayload>) => {
+        const { directionsId } = action.payload;
 
-    if (state[directionsId]) {
-      delete state[directionsId];
-    }
+        if (state[directionsId]) {
+            delete state[directionsId];
+        }
 
-    return state;
-  }
+        return state;
+    },
 });

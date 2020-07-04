@@ -1,12 +1,12 @@
-import {City} from "../../models/City";
+import { City } from '../../models/City';
 
 export interface ICityDatesFormProps {
-  cities: City[];
-  activeCityId: string;
-  colors: string[];
+    cities: City[];
+    activeCityId: string;
+    colors: string[];
 }
 
 export interface ICityDatesFormState {
-  ranges: any;
-  activeRange: number[];
+    ranges: any;
+    activeRange: number[];
 }

@@ -1,13 +1,16 @@
 import * as React from 'react';
-import Logo from '../../assets/bontrip.svg';
-import {IHeaderProps} from "./Header.I";
+import Logo, { ReactComponent as BontripLogo } from '../../assets/bontrip.svg';
+import { IHeaderProps } from './Header.I';
+// import Logo from '-!svg-react-loader!src/assets/bontrip.svg'
 
-const Header: React.FunctionComponent<IHeaderProps> = ({isTransparent}): React.ReactElement => {
-  return (
-    <div className={`header ${isTransparent ? 'is-transparent' : ''}`}>
-      <a className="logo" href="/"><Logo /></a>
-    </div>
-  )
-}
+export const Header: React.FC<IHeaderProps> = (props) => {
+    const { isTransparent } = props;
 
-export default Header;
+    return (
+        <div className={`header ${isTransparent ? 'is-transparent' : ''}`}>
+            <a className="logo" href="/">
+                <BontripLogo />
+            </a>
+        </div>
+    );
+};

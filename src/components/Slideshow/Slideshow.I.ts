@@ -1,4 +1,4 @@
 export interface ISlideshowProps {
-  images: string[];
-  isFullscreen: boolean;
+    images: string[];
+    isFullscreen: boolean;
 }

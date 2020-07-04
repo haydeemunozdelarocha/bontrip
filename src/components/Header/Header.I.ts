@@ -1,4 +1,4 @@
 export interface IHeaderProps {
-  isTransparent: boolean;
-  hasNavigation?: boolean;
+    isTransparent: boolean;
+    hasNavigation?: boolean;
 }

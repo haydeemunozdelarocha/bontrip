@@ -1,5 +1,5 @@
 export class ElementHelpers {
-  public static isInput(element): boolean {
-    return element.tagName.toLowerCase() === 'input';
-  }
+    public static isInput(element: HTMLElement): boolean {
+        return element.tagName.toLowerCase() === 'input';
+    }
 }

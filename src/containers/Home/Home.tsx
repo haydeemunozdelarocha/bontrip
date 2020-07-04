@@ -1,28 +1,26 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Header from '../../components/Header/Header';
-import CityAutocomplete from '../../components/CityAutocomplete/CityAutocomplete';
-import Slideshow from '../../components/Slideshow/Slideshow';
-import {IReduxState} from "../../redux/GlobalStore";
+import { Header } from '../../components/Header/Header';
+import { Slideshow } from '../../components/Slideshow/Slideshow';
+import { CityAutocomplete } from '../../components/CityAutocomplete/CityAutocomplete';
+import { IReduxState } from '../../redux/GlobalStore';
 
-const images = require("../../slideshow.json");
+const images = require('../../slideshow.json');
 
-class Home extends React.Component {
-  render() {
+export const Home: React.FC = () => {
     return (
-      <div className="cover-page-layout">
-        <Header isTransparent={true}/>
-        <Slideshow isFullscreen={true} images={images.home}/>
-        <div className="l-page-overlay">
-          <CityAutocomplete animatedPlaceholderWords={["Tokyo", "Paris", "Munich", "Hong Kong", "Mexico City", "Sao Paolo", "Beijing", "Madrid"]}/>
+        <div className="cover-page-layout">
+            <Header isTransparent={true} />
+            <Slideshow isFullscreen={true} images={images.home} />
+            <div className="l-page-overlay">
+                <CityAutocomplete animatedPlaceholderWords={['Tokyo', 'Paris', 'Munich', 'Hong Kong', 'Mexico City', 'Sao Paolo', 'Beijing', 'Madrid']} />
+            </div>
         </div>
-      </div>
     );
-  }
-}
+};
 
 const mapStateToProps = (state: IReduxState) => ({
-  state: state
+    state: state,
 });
 
 export default connect(mapStateToProps)(Home);

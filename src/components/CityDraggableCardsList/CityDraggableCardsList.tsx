@@ -1,18 +1,16 @@
 import React from 'react';
-import Card from '../NewDraggableCard/NewDraggableCard';
+import CityDraggableCard from '../CityDraggableCard/CityDraggableCard';
 import moment from 'moment';
-import { INewDraggableCard, INewDraggableCardsListProps } from './NewDraggableCardsList.I';
+import { ICityDraggableCard, ICityDraggableCardsListProps } from './CityDraggableCardsList.I';
 import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-import flow from 'lodash/flow';
 
-const NewDraggableCardsList: React.FC<INewDraggableCardsListProps> = (props) => {
+const CityDraggableCardsList: React.FC<ICityDraggableCardsListProps> = (props) => {
     const { cards, moveCard, clickCard } = props;
 
     return (
         <div>
-            {cards.map((card: INewDraggableCard, i: number) => (
-                <Card
+            {cards.map((card: ICityDraggableCard, i: number) => (
+                <CityDraggableCard
                     key={card.name}
                     indicatorColor={card.color}
                     index={i}
@@ -28,4 +26,4 @@ const NewDraggableCardsList: React.FC<INewDraggableCardsListProps> = (props) => 
     );
 };
 
-export default NewDraggableCardsList;
+export default CityDraggableCardsList;

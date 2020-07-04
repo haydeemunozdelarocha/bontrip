@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Header } from '../../components/Header/Header';
 import { Slideshow } from '../../components/Slideshow/Slideshow';
 import { CityAutocomplete } from '../../components/CityAutocomplete/CityAutocomplete';
-import { IReduxState } from '../../redux/GlobalStore';
 
 const images = require('../../slideshow.json');
+const placeholders = ['Tokyo', 'Paris', 'Munich', 'Hong Kong', 'Mexico City', 'Sao Paolo', 'Beijing', 'Madrid'];
 
 export const Home: React.FC = () => {
     return (
@@ -13,14 +12,10 @@ export const Home: React.FC = () => {
             <Header isTransparent={true} />
             <Slideshow isFullscreen={true} images={images.home} />
             <div className="l-page-overlay">
-                <CityAutocomplete animatedPlaceholderWords={['Tokyo', 'Paris', 'Munich', 'Hong Kong', 'Mexico City', 'Sao Paolo', 'Beijing', 'Madrid']} />
+                <CityAutocomplete animatedPlaceholderWords={placeholders} />
             </div>
         </div>
     );
 };
 
-const mapStateToProps = (state: IReduxState) => ({
-    state: state,
-});
-
-export default connect(mapStateToProps)(Home);
+export default Home;

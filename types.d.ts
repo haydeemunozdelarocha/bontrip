@@ -8,3 +8,6 @@ declare module '*.svg' {
   const src: string;
   export default src;
 }
+declare module 'react-dnd';
+declare module 'react-date-range';
+declare module 'react-dnd-html5-backend';

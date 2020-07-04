@@ -4,7 +4,7 @@ export const ItemTypes = {
     CARD: 'card',
 };
 
-export interface INewDraggableCardProps {
+export interface ICityDraggableCardProps {
     key: string;
     id: any;
     index: number;

@@ -1,14 +1,14 @@
 import React, { useImperativeHandle, useRef } from 'react';
 import { ConnectDropTarget, ConnectDragSource, DropTargetMonitor, DragSourceMonitor } from 'react-dnd';
 import { DragSource, DropTarget, DropTargetConnector, DragSourceConnector } from 'react-dnd';
-import { INewDraggableCardProps, ItemTypes } from './NewDraggableCard.I';
+import { ICityDraggableCardProps, ItemTypes } from './CityDraggableCard.I';
 import { XYCoord } from 'dnd-core';
 
 interface CardInstance {
     getNode(): HTMLDivElement | null;
 }
 
-const Card = React.forwardRef<HTMLDivElement, INewDraggableCardProps>(({ text, subtitle, footerText, indicatorColor, classNames, isDragging, connectDragSource, connectDropTarget }, ref) => {
+const CityDraggableCard = React.forwardRef<HTMLDivElement, ICityDraggableCardProps>(({ text, subtitle, footerText, indicatorColor, classNames, isDragging, connectDragSource, connectDropTarget }, ref) => {
     const elementRef = useRef(null);
     connectDragSource(elementRef);
     connectDropTarget(elementRef);
@@ -31,7 +31,7 @@ const Card = React.forwardRef<HTMLDivElement, INewDraggableCardProps>(({ text, s
 export default DropTarget(
     ItemTypes.CARD,
     {
-        hover(props: INewDraggableCardProps, monitor: any, component: CardInstance) {
+        hover(props: ICityDraggableCardProps, monitor: any, component: CardInstance) {
             if (!component) {
                 return null;
             }
@@ -92,7 +92,7 @@ export default DropTarget(
     DragSource(
         ItemTypes.CARD,
         {
-            beginDrag: (props: INewDraggableCardProps) => ({
+            beginDrag: (props: ICityDraggableCardProps) => ({
                 id: props.id,
                 index: props.index,
             }),
@@ -101,5 +101,5 @@ export default DropTarget(
             connectDragSource: connect.dragSource(),
             isDragging: monitor.isDragging(),
         }),
-    )(Card),
+    )(CityDraggableCard),
 );

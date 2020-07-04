@@ -5,7 +5,7 @@ import { userActions } from '../../redux/user/user.actions';
 import { ICityDatesFormProps, ICityDatesFormState } from './CityDatesForm.I';
 import { City } from '../../models/City';
 import { citiesThunks } from '../../redux/cities/cities.thunks';
-import NewDraggableCardsList from '../NewDraggableCardsList/NewDraggableCardsList';
+import CityDraggableCardsList from '../CityDraggableCardsList/CityDraggableCardsList';
 
 let colors = [];
 const today = new Date();
@@ -106,7 +106,7 @@ class CityDatesForm extends React.Component<ICityDatesFormProps, ICityDatesFormS
                         moveRangeOnFirstSelection={false}
                         onRangeFocusChange={this.handleFocusChange}
                     />
-                    <NewDraggableCardsList cards={cities} title="Select city:" clickCard={(cityId: any) => this.clickCard(cityId)} />
+                    <CityDraggableCardsList cards={cities} title="Select city:" clickCard={(cityId: any) => this.clickCard(cityId)} />
                 </div>
             </React.Fragment>
         );

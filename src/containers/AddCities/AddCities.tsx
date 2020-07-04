@@ -11,7 +11,7 @@ import { IAddCitiesProps } from './AddCities.I';
 
 export const AddCities: React.FC<IAddCitiesProps> = (props) => {
     const { selectedCities, activeCity, cityColors, directions } = props;
-    console.log(activeCity);
+
     return (
         <div>
             <Header hasNavigation={false} isTransparent={false} />

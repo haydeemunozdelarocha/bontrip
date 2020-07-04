@@ -8,7 +8,7 @@ export const Sidepanel: React.FC<ISidepanelProps> = (props) => {
     const [isOpen, togglePanel] = useState(false);
 
     const panelClasses = classNames({
-        sidepanel: true,
+        'sidepanel': true,
         'sidepanel-open': isOpen,
         'sidepanel-left': orientation === 'left',
         'sidepanel-right': orientation === 'right',

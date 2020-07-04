@@ -1,11 +1,11 @@
-export interface INewDraggableCardsListProps {
-    cards: INewDraggableCard[];
+export interface ICityDraggableCardsListProps {
+    cards: ICityDraggableCard[];
     clickCard: (id: string) => void;
     moveCard?: () => void;
     title: string;
 }
 
-export interface INewDraggableCard {
+export interface ICityDraggableCard {
     id: string;
     color: string;
     startDate: string;

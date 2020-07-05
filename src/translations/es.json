@@ -1,0 +1,18 @@
+{
+  "placeholders": {
+    "city_autocomplete": "A dónde?",
+    "city_array": [
+      "Tokyo",
+      "Paris",
+      "Munich",
+      "Hong Kong",
+      "Ciudad de México",
+      "Sao Paolo",
+      "Beijing",
+      "Madrid"
+    ]
+  },
+  "forms": {
+    "city_dates_form_title": "Selecciona una ciudad:"
+  }
+}

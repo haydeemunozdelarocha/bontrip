@@ -3,15 +3,11 @@ import { Animations } from '../../helpers/Animations';
 import Autosuggest from 'react-autosuggest';
 import { City } from '../../models/City';
 import { ICityAutocompleteProps } from './CityAutocomplete.I';
-import { GlobalStore } from '../../redux/GlobalStore';
-import { citiesThunks } from '../../redux/cities/cities.thunks';
 import { CityService } from '../../services/CityService';
-import { Navigation } from '../../helpers/Navigation';
-import { FormEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export const CityAutocomplete: React.FC<ICityAutocompleteProps> = (props: ICityAutocompleteProps) => {
-    const { animatedPlaceholderWords } = props;
-    const placeholder = 'Where to?';
+export const CityAutocomplete: React.FC<ICityAutocompleteProps> = (props) => {
+    const { animatedPlaceholderWords, placeholder, onSelect } = props;
     const [value, setValue] = useState('');
     const [suggestions, setSuggestions] = useState([]);
 
@@ -33,19 +29,16 @@ export const CityAutocomplete: React.FC<ICityAutocompleteProps> = (props: ICityA
         }
     };
 
-    const onSelect = (event: FormEvent, data: any) => {
-        GlobalStore.dispatch(citiesThunks.saveCity(data.suggestion) as any);
-        Navigation.goTo('/newtrip');
-    };
-
     return (
         <Autosuggest
+            data-cy={"city-search-input"}
             ref={(autosuggest: any) =>
                 autosuggest &&
                 Animations.typing({
                     element: autosuggest.input,
                     wordsArray: animatedPlaceholderWords,
-                    defaultPlaceholder: 'Where to?',
+                    defaultPlaceholder: placeholder,
+                    addListener: true
                 })
             }
             suggestions={suggestions}
@@ -58,7 +51,7 @@ export const CityAutocomplete: React.FC<ICityAutocompleteProps> = (props: ICityA
                 placeholder: placeholder,
                 value,
                 onChange: (e, inputData: any) => {
-                    setValue(inputData.newValue);
+                    setValue(inputData.newValue || '');
                 },
             }}
         />

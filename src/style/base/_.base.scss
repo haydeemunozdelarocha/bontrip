@@ -1,13 +1,5 @@
 @import 'settings';
 @import '../../../../../Desktop/bontrip-react/node_modules/foundation-sites/scss/foundation';
-//// scss-lint:disable ImportPath
-//// There are other files with the same name so removing scss will throw and error so this rule had to be ignored
-//@import '../../../node_modules/slick-carousel/slick/slick.scss';
-//@import '../../../node_modules/slick-carousel/slick/slick-theme.scss';
-
-// Import Foundation Styles/Components (Only use what we need)
-// https://foundation.zurb.com/sites/docs/
-// --------
 
 $global-flexbox: true !global;
 
@@ -23,21 +15,12 @@ $global-flexbox: true !global;
 @include foundation-close-button;
 @include foundation-table;
 
-////Slideshow
-
-// Animation
-//@include motion-ui-transitions;
-//@include motion-ui-animations;
-
 // Custom base styles
 // --------
 
-//@import 'typography';
 @import 'button';
 @import 'form';
 @import 'datepicker';
-
-//@import 'table';
 
 body {
   overflow: hidden;

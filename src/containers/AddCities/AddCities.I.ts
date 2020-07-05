@@ -7,4 +7,5 @@ export interface IAddCitiesProps {
     activeCity: City;
     cityColors: string[];
     directions: any;
+    intl: any;
 }

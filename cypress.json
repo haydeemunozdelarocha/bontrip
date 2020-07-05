@@ -1,0 +1,21 @@
+{
+  "fixturesFolder": "e2e/fixtures",
+  "integrationFolder": "e2e/integration",
+  "pluginsFile": "e2e/plugins/index.js",
+  "screenshotsFolder": "e2e/screenshots",
+  "videosFolder": "e2e/videos",
+  "supportFile": "e2e/support/index.js",
+  "viewportWidth": 1420,
+  "viewportHeight": 750,
+  "defaultCommandTimeout": 35000,
+  "requestTimeout": 30000,
+  "pageLoadTimeout": 35000,
+  "taskTimeout": 300000,
+  "projectId": "des5ma",
+  "chromeWebSecurity": false,
+  "env":
+  {
+    "RETRIES": 2
+  }
+}
+

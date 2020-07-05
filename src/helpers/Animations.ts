@@ -26,8 +26,12 @@ export class Animations {
 
         const isAnimationPaused: boolean = element && element.dataset['typingAnimationPaused'] === 'true';
         const currentIndex: number = index ? index : 0;
-        const placeholderValue: string = isAnimationPaused && currentIndex <= wordsArray.length - 1 ? defaultPlaceholder : wordsArray[currentIndex];
-        const pauseAnimation = (value: any, e: FocusEvent): void => ((e.target as HTMLElement).dataset.typingAnimationPaused = value);
+        const placeholderValue: string = isAnimationPaused && currentIndex <= wordsArray.length - 1 ?
+            defaultPlaceholder :
+            wordsArray && wordsArray[currentIndex] ? wordsArray[currentIndex] : '';
+        const pauseAnimation = (value: any, e: FocusEvent): void => {
+            return ((e.target as HTMLElement).dataset.typingAnimationPaused = value);
+        };
 
         if (addListener) {
             element.addEventListener('focusin', (e) => pauseAnimation('true', e));
@@ -36,16 +40,18 @@ export class Animations {
 
         element.setAttribute('placeholder', placeholderValue);
 
-        setTimeout(
-            () =>
-                Animations.typing({
-                    element: element,
-                    wordsArray: wordsArray,
-                    defaultPlaceholder: defaultPlaceholder,
-                    index: currentIndex === wordsArray.length - 1 ? 0 : currentIndex + 1,
-                    addListener: false,
-                }),
-            this.animationTimeout,
-        );
+        if (!isAnimationPaused) {
+            setTimeout(
+                () =>
+                    Animations.typing({
+                        element: element,
+                        wordsArray: wordsArray,
+                        defaultPlaceholder: defaultPlaceholder,
+                        index: currentIndex === wordsArray.length - 1 ? 0 : currentIndex + 1,
+                        addListener: false,
+                    }),
+                this.animationTimeout,
+            );
+        }
     }
 }

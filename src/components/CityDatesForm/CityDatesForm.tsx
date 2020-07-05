@@ -13,7 +13,7 @@ const today = new Date();
 export const CityDatesForm: React.FC<ICityDatesFormProps> = (props) => {
     const [ranges, setRanges] = useState([]);
     const [activeRange, setActiveRange] = useState([0,0]);
-    const { colors, cities, activeCityId } = props;
+    const { colors, cities, activeCityId, title } = props;
 
     useEffect(() => {
         createCityDateRanges();
@@ -75,10 +75,8 @@ export const CityDatesForm: React.FC<ICityDatesFormProps> = (props) => {
                     moveRangeOnFirstSelection={false}
                     onRangeFocusChange={handleFocusChange}
                 />
-                <CityDraggableCardsList cards={cities} title="Select city:" clickCard={(cityId: any) => clickCard(cityId)} />
+                <CityDraggableCardsList cards={cities} title={title} clickCard={(cityId: string) => clickCard(cityId)} />
             </div>
         </React.Fragment>
     );
 }
-
-export default CityDatesForm;

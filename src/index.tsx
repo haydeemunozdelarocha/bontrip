@@ -9,20 +9,31 @@ import './style/app.scss';
 import * as moment from 'moment';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import {IntlProvider} from "react-intl";
+import messages_es from "./translations/es.json";
+import messages_en from "./translations/en.json";
+
+const messages: any = {
+    'es': messages_es,
+    'en': messages_en
+};
+const language = navigator.language.split(/[-_]/)[0];
 
 // Set default format
 (moment as any).defaultFormat = 'YYYY/MM/DD';
 
 const App = () => {
     return (
-        <DndProvider backend={HTML5Backend}>
-            <Provider store={GlobalStore}>
-                <Router history={browserHistory}>
-                    <Route path="/" component={Home} />
-                    <Route path="/newtrip" component={AddCities} />
-                </Router>
-            </Provider>
-        </DndProvider>
+        <IntlProvider locale={language} defaultLocale={'en'} messages={messages[language]}>
+            <DndProvider backend={HTML5Backend}>
+                <Provider store={GlobalStore}>
+                    <Router history={browserHistory}>
+                        <Route path="/" component={Home} />
+                        <Route path="/newtrip" component={AddCities} />
+                    </Router>
+                </Provider>
+            </DndProvider>
+        </IntlProvider>
     );
 };
 

@@ -15,9 +15,9 @@ export const Sidepanel: React.FC<ISidepanelProps> = (props) => {
     });
 
     return (
-        <div className={panelClasses} style={{ backgroundColor: color || '#2144b7' }}>
+        <div className={panelClasses} style={{ backgroundColor: color }}>
             <div className="sidepanel-content">{children}</div>
-            <div className="sidepanel-tab" onClick={() => togglePanel(!isOpen)} style={{ top: `${index * 70}px`, backgroundColor: color || '#2144b7' }}>
+            <div className="sidepanel-tab" onClick={() => togglePanel(!isOpen)} style={{ top: `${index * 70}px`, backgroundColor: color }}>
                 <img className="sidepanel-tab-image" src={image} />
             </div>
         </div>

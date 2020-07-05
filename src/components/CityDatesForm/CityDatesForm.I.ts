@@ -4,6 +4,7 @@ export interface ICityDatesFormProps {
     cities: City[];
     activeCityId: string;
     colors: string[];
+    title: string;
 }
 
 export interface ICityDatesFormState {

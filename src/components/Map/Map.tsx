@@ -12,7 +12,6 @@ const Map = ReactMapboxGl({
 
 export const MapWrapper: React.FC<IMapProps> = (props) => {
     const { markersData, location, directions } = props;
-    console.log(props);
     const setMarker = (map: any, event: any) => {
         const { lng, lat } = event.lngLat;
 
@@ -24,8 +23,8 @@ export const MapWrapper: React.FC<IMapProps> = (props) => {
     const renderMarkers = () => {
         return markersData.map((markerInfo: any, i: number) => (
             <Marker coordinates={[markerInfo.coordinates.lat, markerInfo.coordinates.lng]} key={`marker-${i}`} onClick={() => alert(markerInfo.color)} anchor={'bottom'} offset={[0, 0]}>
-                <div style={{ color: markerInfo.color }}>
-                    <SVG onLoad={(src, hasCache) => console.log(src, hasCache)} id="map-marker" src="/images/marker.svg" preProcessor={(code) => code.replace(/fill=".*?"/g, `fill="currentColor"`)} />
+                <div style={{ color: markerInfo.color }} key={`marker-wrapper-${i}`}>
+                    <SVG key={`marker-icon-${i}`} id="map-marker" src="/images/marker.svg" preProcessor={(code) => code.replace(/fill=".*?"/g, `fill="currentColor"`)} />
                 </div>
             </Marker>
         ));

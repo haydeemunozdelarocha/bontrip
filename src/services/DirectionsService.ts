@@ -7,7 +7,7 @@ export class DirectionsService {
             const parsedPointString = this.getParsedPointString(points);
 
             axios
-                .get(`https://api.mapbox.com/directions/v5/mapbox/${method}/${parsedPointString}?geometries=geojson&access_token=${process.env.BONTRIP_MAP_KEY}`)
+                .get(`https://api.mapbox.com/directions/v5/mapbox/${method}/${parsedPointString}?geometries=geojson&access_token=${process.env.REACT_APP_BONTRIP_MAP_KEY}`)
                 .then(function (response) {
                     if (response.data && response.status === 200) {
                         resolve(response.data);

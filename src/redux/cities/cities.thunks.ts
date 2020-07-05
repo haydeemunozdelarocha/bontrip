@@ -79,6 +79,7 @@ const updateDirections = (city: City) => {
 const rescheduleCity = (cityId: string, startDate: Date, endDate: Date) => {
     return (dispatch: Dispatch, getState: () => IReduxState) => {
         const savedCitiesBefore = createGetCities()(getState());
+        console.log('savedCitiesBefore', savedCitiesBefore)
         dispatch(
             citiesActions.updateOne({
                 cityId,
@@ -90,13 +91,19 @@ const rescheduleCity = (cityId: string, startDate: Date, endDate: Date) => {
         );
 
         const savedCitiesAfter = createGetCities()(getState());
+        console.log('savedCitiesAfter', savedCitiesAfter)
 
-        savedCitiesAfter.forEach((city: City, i: number) => {
-            const shouldUpdate = i == 0 && i !== savedCitiesAfter.length - 1 ? savedCitiesBefore[i + 1].id !== savedCitiesAfter[i + 1].id : savedCitiesBefore[i - 1].id !== savedCitiesAfter[i - 1].id;
-            if (shouldUpdate) {
-                dispatch(updateDirections(city) as any);
-            }
-        });
+        if (savedCitiesAfter.length > 1) {
+            savedCitiesAfter.forEach((city: City, i: number) => {
+                const isFirstOrLast = i == 0 && i !== savedCitiesAfter.length - 1;
+                const shouldUpdate = isFirstOrLast ?
+                    savedCitiesBefore[i + 1].id !== savedCitiesAfter[i + 1].id :
+                    savedCitiesBefore[i - 1].id !== savedCitiesAfter[i - 1].id;
+                if (shouldUpdate) {
+                    dispatch(updateDirections(city) as any);
+                }
+            });
+        }
     };
 };
 

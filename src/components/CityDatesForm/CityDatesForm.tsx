@@ -22,7 +22,7 @@ export const CityDatesForm: React.FC<ICityDatesFormProps> = (props) => {
     useEffect(() => {
         const currentActiveCityIndex = getCurrentActiveCityIndex();
         setActiveRange([currentActiveCityIndex, currentActiveCityIndex])
-    }, [cities]);
+    }, [activeCityId]);
 
     const handleRangeChange = (range: any) => {
         const getRange: any = Object.values(range) && Object.values(range).length > 0 && Object.values(range)[0];

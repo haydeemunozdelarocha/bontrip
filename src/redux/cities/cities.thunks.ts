@@ -1,4 +1,4 @@
-import { IReduxState } from '../GlobalStore';
+import {GlobalStore, IReduxState} from '../GlobalStore';
 import { createGetCities } from './cities.selectors';
 import { City } from '../../models/City';
 import { citiesActions } from './cities.actions';
@@ -7,11 +7,12 @@ import { DirectionsService } from '../../services/DirectionsService';
 import { directionsActions } from '../directions/directions.actions';
 import { Dispatch } from 'redux';
 import * as moment from 'moment';
+import {createGetDirections} from "../directions/directions.selectors";
 
 const saveCity = (city: any) => {
     return (dispatch: Dispatch, getState: () => IReduxState) => {
         const savedCities: City[] = createGetCities()(getState());
-        const isCityAlreadyAdded = savedCities.find((savedCity: City) => savedCity.name === city.name);
+        const isCityAlreadyAdded = savedCities.length > 0 && savedCities.find((savedCity: City) => savedCity.name === city.name);
         const lastCity: City = savedCities[savedCities.length - 1];
         const startDate = city.startDate ? new Date(city.startDate) : lastCity ? new Date(lastCity.endDate) : new Date();
         const endDate = city.endDate ? new Date(city.endDate) : new Date(new Date().setDate(startDate.getDate() + 1));
@@ -107,7 +108,26 @@ const rescheduleCity = (cityId: string, startDate: Date, endDate: Date) => {
     };
 };
 
+const removeCity = (cityId: string) => {
+    return (dispatch: Dispatch, getState: () => IReduxState) => {
+        dispatch(citiesActions.remove({ cityId }));
+        dispatch(directionsActions.remove({ directionsId: cityId }));
+
+        const state = getState();
+        const cities = createGetCities()(state);
+
+        if (cities.length < 2) {
+            const directions = createGetDirections()(state) || [];
+            Object.keys(directions).forEach((cityId) => {
+                dispatch(directionsActions.remove({ directionsId: cityId }));
+            })
+
+        }
+    }
+}
+
 export const citiesThunks = {
     saveCity,
+    removeCity,
     rescheduleCity,
 };

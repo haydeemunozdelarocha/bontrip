@@ -3,12 +3,13 @@ import { ConnectDropTarget, ConnectDragSource, DropTargetMonitor, DragSourceMoni
 import { DragSource, DropTarget, DropTargetConnector, DragSourceConnector } from 'react-dnd';
 import { ICityDraggableCardProps, ItemTypes } from './CityDraggableCard.I';
 import { XYCoord } from 'dnd-core';
+import SVG from 'react-inlinesvg';
 
 interface CardInstance {
     getNode(): HTMLDivElement | null;
 }
 
-const CityDraggableCard = React.forwardRef<HTMLDivElement, ICityDraggableCardProps>(({ text, subtitle, footerText, indicatorColor, classNames, isDragging, connectDragSource, connectDropTarget }, ref) => {
+const CityDraggableCard = React.forwardRef<HTMLDivElement, ICityDraggableCardProps>(({ id, text, subtitle, footerText, indicatorColor, classNames, isDragging, connectDragSource, connectDropTarget, onRemove }, ref) => {
     const elementRef = useRef(null);
     connectDragSource(elementRef);
     connectDropTarget(elementRef);
@@ -19,11 +20,10 @@ const CityDraggableCard = React.forwardRef<HTMLDivElement, ICityDraggableCardPro
     }));
     return (
         <div ref={elementRef} className={`draggable-card ${classNames}`} style={{ opacity }}>
-            <span className="draggable-card__indicator" style={{ backgroundColor: indicatorColor }}></span>
-            <span className="draggable-card__content">{text}</span>
+            <SVG key={`remove-icon-${id}`} width="14" height="14" onClick={() => onRemove(id)} className="draggable-card__remove-icon" src="/images/close.svg" />
+            <span className="draggable-card__content"><div className="draggable-card__indicator" style={{ backgroundColor: indicatorColor }}></div><span>{text}</span></span>
             <span className="draggable-card__subtitle">{subtitle}</span>
             <span className="draggable-card__handle"></span>
-            <span className="draggable-card__footer">{footerText}</span>
         </div>
     );
 });

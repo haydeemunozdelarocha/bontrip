@@ -1,0 +1,10 @@
+.page {
+  background-color: $medium-blue;
+  min-height: calc(100vh - 70px);
+
+  &__center-vertical {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+}

@@ -1,4 +1,19 @@
-.l-centered-block {
+.centered-block {
   margin-left: auto;
   margin-right: auto;
+
+  &__med {
+    max-width: 700px;
+    padding: 2rem 3rem;
+
+    .centered-block__title {
+      font-size: 1.6rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  &__with-background {
+    background-color: white;
+    outline: 3px solid #000000;
+  }
 }

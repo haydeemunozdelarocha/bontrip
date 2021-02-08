@@ -13,14 +13,14 @@ import { injectIntl } from 'react-intl'
 export const AddCities: React.FC<IAddCitiesProps> = (props) => {
     const { selectedCities, activeCity, cityColors, directions } = props;
     const cityDatesFormTitle = props.intl.messages.forms.city_dates_form_title;
-
+    const initialLocation = activeCity ? [activeCity.coordinates.lat, activeCity.coordinates.lng] : [-73.935242, 40.730610];
     return (
         <div>
             <Header hasNavigation={false} isTransparent={false} />
             <Sidepanel index={1} image={'/images/map.png'} orientation="left">
-                <CityDatesForm title={cityDatesFormTitle} colors={cityColors} cities={selectedCities} activeCityId={activeCity.id} />
+                <CityDatesForm title={cityDatesFormTitle} colors={cityColors} cities={selectedCities} activeCityId={activeCity ? activeCity.id : ''} />
             </Sidepanel>
-            <MapWrapper directions={directions} isLoaded={false} location={[activeCity.coordinates.lat, activeCity.coordinates.lng]} markersData={selectedCities} />
+            <MapWrapper directions={directions} isLoaded={false} location={initialLocation} markersData={selectedCities} />
         </div>
     );
 };

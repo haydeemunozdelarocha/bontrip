@@ -6,7 +6,7 @@ export const ItemTypes = {
 
 export interface ICityDraggableCardProps {
     key: string;
-    id: any;
+    id: string;
     index: number;
     text: string;
     footerText?: string;
@@ -18,4 +18,5 @@ export interface ICityDraggableCardProps {
     isDragging: boolean;
     connectDragSource: any;
     connectDropTarget: any;
+    onRemove: (id: string) => void;
 }

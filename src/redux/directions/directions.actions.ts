@@ -1,4 +1,4 @@
-import { ActionCreatorWithoutPayload, ActionCreatorWithPayload, createAction } from '@reduxjs/toolkit';
+import { ActionCreatorWithPayload, createAction } from '@reduxjs/toolkit';
 import { IDirectionsPayload, IRemoveDirectionsPayload } from './directions.reducers';
 
 const add: ActionCreatorWithPayload<IDirectionsPayload> = createAction('DIRECTIONS::ADD');

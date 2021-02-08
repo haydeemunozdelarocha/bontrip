@@ -11,9 +11,20 @@
       "Sao Paolo",
       "Beijing",
       "Madrid"
-    ]
+    ],
+    "contact": {
+      "email": "email",
+      "password": "password",
+      "confirm_password": "confirm password"
+    }
   },
   "forms": {
-    "city_dates_form_title": "Select city:"
+    "city_dates_form_title": "Select city:",
+    "submit": "Submit"
+  },
+  "pages": {
+    "signup": {
+      "title": "Create an account"
+    }
   }
 }

@@ -2,6 +2,7 @@ export interface ICityDraggableCardsListProps {
     cards: ICityDraggableCard[];
     clickCard: (id: string) => void;
     moveCard?: () => void;
+    removeCard?: (id: string) => void;
     title: string;
 }
 

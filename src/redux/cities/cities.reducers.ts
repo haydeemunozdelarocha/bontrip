@@ -1,5 +1,5 @@
 import { createReducer, PayloadAction, Reducer } from '@reduxjs/toolkit';
-import { citiesActions, IAddCityPayload, IUpdateOnePayload } from './cities.actions';
+import {citiesActions, IAddCityPayload, IRemoveCityPayload, IUpdateOnePayload} from './cities.actions';
 import { ICityCoordinates } from '../../models/City';
 
 export interface ICitiesReduxState {
@@ -18,7 +18,14 @@ const initialState: ICitiesReduxState = {};
 export const citiesReducer: Reducer<ICitiesReduxState> = createReducer(initialState, {
     [citiesActions.add.type]: (state: ICitiesReduxState, action: PayloadAction<IAddCityPayload>) => {
         const { city } = action.payload;
+
         state[city.id] = city.normalize();
+
+        return state;
+    },
+    [citiesActions.remove.type]: (state: ICitiesReduxState, action: PayloadAction<IRemoveCityPayload>) => {
+        const { cityId } = action.payload;
+        delete state[cityId];
 
         return state;
     },

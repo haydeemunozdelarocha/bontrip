@@ -12,6 +12,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import {IntlProvider} from "react-intl";
 import messages_es from "./translations/es.json";
 import messages_en from "./translations/en.json";
+import {Register} from "./containers/Register/Register";
 
 const messages: any = {
     'es': messages_es,
@@ -29,6 +30,7 @@ const App = () => {
                 <Provider store={GlobalStore}>
                     <Router history={browserHistory}>
                         <Route path="/" component={Home} />
+                        <Route path="/register" component={Register} />
                         <Route path="/newtrip" component={AddCities} />
                     </Router>
                 </Provider>

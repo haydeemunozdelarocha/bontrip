@@ -58,6 +58,7 @@ export const CityDatesForm: React.FC<ICityDatesFormProps> = (props) => {
     };
 
     const clickCard = (cityId: string) => GlobalStore.dispatch(userActions.setActiveCity({ cityId }));
+    const removeCard = (cityId: string) => GlobalStore.dispatch(citiesThunks.removeCity(cityId) as any);
 
     return (
         <React.Fragment>
@@ -75,7 +76,7 @@ export const CityDatesForm: React.FC<ICityDatesFormProps> = (props) => {
                     moveRangeOnFirstSelection={false}
                     onRangeFocusChange={handleFocusChange}
                 />
-                <CityDraggableCardsList cards={cities} title={title} clickCard={(cityId: string) => clickCard(cityId)} />
+                <CityDraggableCardsList cards={cities} removeCard={removeCard} title={title} clickCard={(cityId: string) => clickCard(cityId)} />
             </div>
         </React.Fragment>
     );

@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 1rem .5rem;
+  padding: 1rem .7rem;
   position: relative;
   margin-bottom: 1rem;
 
@@ -36,9 +36,8 @@
     width: 10px;
     height: 10px;
     border-radius: 50px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    display: inline-block;
+    margin-right: 8px;
   }
 
   &__subtitle {
@@ -59,5 +58,17 @@
     color: $medium-gray;
     font-size: rem-calc(12);
     width: 100%;
+  }
+
+  &__remove-icon {
+    fill: $medium-gray;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__remove {
+    color: $medium-gray;
+    padding-top: .5rem;
   }
 }
